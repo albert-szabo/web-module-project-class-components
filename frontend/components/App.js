@@ -46,6 +46,19 @@ export default class App extends React.Component {
     })
   }
 
+  handleAdd = (task) => {
+    const newTask = {
+      name: task,
+      id: Date.now(),
+      completed: false
+    }
+
+    this.setState({
+      ...this.state,
+      toDoItems: [...this.state.toDoItems, newTask]
+    })
+  }
+
   render() {
     const { toDoItems } = this.state;
 
@@ -53,9 +66,9 @@ export default class App extends React.Component {
       <div>
         <h1>To Do App</h1>
 
-        <TodoList toDoItems={toDoItems} />
+        <TodoList toDoItems={toDoItems}/>
 
-        <Form />
+        <Form handleAdd={this.handleAdd}/>
 
         <button onClick={this.handleClear}>Clear</button>
       </div>
