@@ -59,14 +59,29 @@ export default class App extends React.Component {
     })
   }
 
+  handleToggle = (clickedId) => {
+    this.setState({
+      ...this.state,
+      toDoItems: this.state.toDoItems.map(task => {
+        if (task.id === clickedId) {
+          return {
+            ...task,
+            completed: !task.completed
+          }
+        }
+        return task;
+      })
+    })
+  }
+
   render() {
     const { toDoItems } = this.state;
 
     return (
       <div>
-        <h1>To Do App</h1>
+        <h1>To Do</h1>
 
-        <TodoList toDoItems={toDoItems}/>
+        <TodoList toDoItems={toDoItems} handleToggle={this.handleToggle}/>
 
         <Form handleAdd={this.handleAdd}/>
 
