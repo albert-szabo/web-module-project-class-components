@@ -37,6 +37,15 @@ export default class App extends React.Component {
     }
   }
 
+  handleClear = () => {
+    this.setState({
+      ...this.state,
+      toDoItems: this.state.toDoItems.filter(task => {
+        return (task.completed === false);
+      })
+    })
+  }
+
   render() {
     const { toDoItems } = this.state;
 
@@ -48,7 +57,7 @@ export default class App extends React.Component {
 
         <Form />
 
-        <button>Clear</button>
+        <button onClick={this.handleClear}>Clear</button>
       </div>
     )
   }
