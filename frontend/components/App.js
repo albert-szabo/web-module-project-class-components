@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+
+import TodoList from './TodoList';
+import Form from './Form';
 
 export default class App extends React.Component {
   constructor() {
@@ -41,16 +44,9 @@ export default class App extends React.Component {
       <div>
         <h1>To Do App</h1>
 
-        <ul>
-          {toDoItems.map(item => {
-            return (<li>{item.name} {item.completed ? <span>-completed</span> : <span></span>}</li>)
-          })}
-        </ul>
+        <TodoList toDoItems={toDoItems} />
 
-        <form>
-          <input/>
-          <button>Add</button>
-        </form>
+        <Form />
 
         <button>Clear</button>
       </div>
